@@ -1,0 +1,126 @@
+Name "Mana Pool Automation"
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+
+-- Adjust Item Values as needed --
+
+-- This Line checks the redstone levels of the Pool --
+
+-- If the pool has a full mana level then it will output a redstone level
+-- of 15, it will  then drop Diamonds, Strings, Glowstones, and
+-- Ender Pearls depending on Amount of Resources in Specified Drawers.
+
+Every 20 Ticks Do
+        
+-- Mana Diamond --
+
+        If REDSTONE = 15 and "Mana_Resources" has
+               < 300 botania:manaresource@2 Then
+            
+            Input 2
+                minecraft:diamond
+                From "EMCLink"
+
+            Output 2
+                minecraft:diamond
+                To "Mana_Pool"
+        Else
+
+-- Mana Pearl --
+
+        If REDSTONE = 15 and "Mana_Resources" has
+               < 128 botania:manaresource@1 Then 
+
+            Input 4
+                minecraft:ender_pearl
+                From "EMCLink"
+
+            Output 4
+                minecraft:ender_pearl
+                To "Mana_Pool"
+
+        Else
+
+-- Mana Powder --
+
+        If REDSTONE = 15 and "Mana_Resources" has
+               < 128 botania:manaresource@23 Then 
+
+            Input 4
+                minecraft:glowstone_dust
+                From "EMCLink"
+
+            Output 4
+                minecraft:glowstone_dust
+                To "Mana_Pool"
+
+        Else
+
+-- Mana Steel --
+
+        If REDSTONE = 15 and "Mana_Resources" has
+               < 1028 botania:manaresource@0 Then 
+
+            Input 8
+                minecraft:iron_ingot
+                From "EMCLink"
+
+            Output 8
+                minecraft:iron_ingot
+                To "Mana_Pool"
+
+        End
+
+End
+
+-- Input from Automation to Drawers --
+
+Every 20 Ticks Do
+
+-- Mana Diamond --
+
+            Input 64
+                botania:manaresource@2
+                From "Mana_Pool_Resources"
+            
+            Output 64
+                botania:manaresource@2
+                To "Mana_Resources"               
+
+Forget
+
+-- Mana Pearl --
+
+            Input 64
+                botania:manaresource@1
+                From "Mana_Pool_Resources"
+            
+            Output 64
+                botania:manaresource@1
+                To "Mana_Resources"               
+
+Forget
+
+-- Mana Powder --
+
+            Input 64
+                botania:manaresource@23
+                From "Mana_Pool_Resources"
+            
+            Output 64
+                botania:manaresource@23
+                To "Mana_Resources"               
+
+Forget
+
+-- Mana Steel --
+
+            Input 64
+                botania:manaresource@0
+                From "Mana_Pool_Resources"
+            
+            Output 64
+                botania:manaresource@0
+                To "Mana_Resources"   
+
+End

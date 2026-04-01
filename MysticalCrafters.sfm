@@ -1,0 +1,217 @@
+Name "Mystical Agri Crafters"
+
+
+Every Redstone Pulse Do
+    If Crafter1 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 black_quartz_essence,
+            64 mithril_essence,
+            64 aquamarine_essence,
+            64 syrmorite_essence,
+            64 void_metal_essence,
+            64 aluminum_essence,
+            64 ardite_essence,
+            64 rock_crystal_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 black_quartz_essence,
+            Retain 64 mithril_essence,
+            Retain 64 aquamarine_essence,
+            Retain 64 syrmorite_essence,
+            Retain 64 void_metal_essence,
+            Retain 64 aluminum_essence,
+            Retain 64 ardite_essence,
+            Retain 64 rock_crystal_essence
+            To Crafter1
+
+    End
+
+Forget
+
+    If Crafter2 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 fiery_ingot_essence,
+            64 titanium_essence,
+            64 thorium_essence,
+            64 coralium_essence,
+            64 iridium_essence,
+            64 valonite_essence,
+            64 slimy_bone_essence,
+            64 nether_quartz_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 fiery_ingot_essence,
+            Retain 64 titanium_essence,
+            Retain 64 thorium_essence,
+            Retain 64 coralium_essence,
+            Retain 64 iridium_essence,
+            Retain 64 valonite_essence,
+            Retain 64 slimy_bone_essence,
+            Retain 64 nether_quartz_essence
+            To Crafter2
+
+    End
+
+Forget
+
+    If Crafter3 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 abyssalnite_essence,
+            64 starmetal_essence,
+            64 ironwood_essence,
+            64 iron_essence,
+            64 steeleaf_essence,
+            64 sulfur_essence,
+            64 cobalt_essence,
+            64 boron_crystal_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 abyssalnite_essence,
+            Retain 64 starmetal_essence,
+            Retain 64 ironwood_essence,
+            Retain 64 iron_essence,
+            Retain 64 steeleaf_essence,
+            Retain 64 sulfur_essence,
+            Retain 64 cobalt_essence,
+            Retain 64 boron_crystal_essence
+            To Crafter3
+
+    End
+
+Forget
+
+    If Crafter4 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 draconium_essence,
+            64 coal_essence,
+            64 graphite_essence,
+            64 silicon_essence,
+            64 saltpeter_essence,
+            64 magnesium_essence,
+            64 lithium_essence,
+            64 electrotine_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 draconium_essence,
+            Retain 64 coal_essence,
+            Retain 64 graphite_essence,
+            Retain 64 silicon_essence,
+            Retain 64 saltpeter_essence,
+            Retain 64 magnesium_essence,
+            Retain 64 lithium_essence,
+            Retain 64 electrotine_essence
+            To Crafter4
+        
+    End
+
+Forget
+
+    If Crafter5 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 chrome_essence,
+            64 jade_essence,
+            64 dreadium_essence,
+            64 fluix_essence,
+            64 knightmetal_essence,
+            64 tungsten_essence,
+            64 hop_graphite_essence,
+            64 platinum_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 chrome_essence,
+            Retain 64 jade_essence,
+            Retain 64 dreadium_essence,
+            Retain 64 fluix_essence,
+            Retain 64 knightmetal_essence,
+            Retain 64 tungsten_essence,
+            Retain 64 hop_graphite_essence,
+            Retain 64 platinum_essence
+            To Crafter5
+
+    End
+
+Forget
+
+    If Crafter6 has 
+        < 1 mysticalagricraft:* Then
+
+        Input 
+            64 uranium_essence,
+            64 thaumium_essence,
+            64 yellorium_essence,
+            64 neutronium_essence,
+            64 nether_star_essence
+            From Essence1
+
+        Output 64 Each
+            Retain 64 uranium_essence,
+            Retain 64 thaumium_essence,
+            Retain 64 yellorium_essence,
+            Retain 64 neutronium_essence,
+            Retain 64 nether_star_essence
+            To Crafter6
+
+    End
+
+End
+
+Every Redstone Pulse Do
+    
+        Input
+            *
+            From Crafter Slots 26, 27, 28, 29
+
+        Output
+            *
+            To "Output"
+
+End
+
+Every Redstone Pulse Do
+
+    If Platinum has
+        < 128 material@134 Then
+
+        Input 128
+            material@134
+            From "Output"
+
+        Output Retain 128
+            material@134
+            To Platinum
+
+    End
+
+End
+
+Every Redstone Pulse Do
+
+    If Yellorium has
+        < 256 ingotyellorium Then
+
+        Input 256
+            ingotyellorium
+            From "Output"
+
+        Output Retain 256
+            ingotyellorium
+            To Yellorium
+
+    End
+
+End

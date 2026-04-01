@@ -1,0 +1,135 @@
+Name "Misc. Automations"
+
+-- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick do
+
+    Input 8192 fe: : 
+        From Power
+
+    Output 8192 fe: : 
+        To Villager, Chorus, CrystalEmber
+
+    Output 8192 fe: :
+        To Sag West Side
+
+End
+
+-- Item Transfer Operations --
+
+-- Cobblestone Compacting --
+
+Every 80 Ticks Do
+        
+        Input 300000
+            minecraft:cobblestone
+            From EMCLink
+        
+        Output 300000
+            minecraft:cobblestone
+            To Compacts
+
+        Input 10000
+            extrautils2:compressedcobblestone@1
+            From Compacts
+        
+        Output 10000
+            extrautils2:compressedcobblestone@1
+            To Compacts2
+
+        Input 1000
+            extrautils2:compressedcobblestone@3
+            From Compacts2
+        
+        Output 1000
+            extrautils2:compressedcobblestone@3
+            To Compacts3
+
+        Input 10
+            extrautils2:compressedcobblestone@5
+            From Compacts3
+        
+        Output 10
+            extrautils2:compressedcobblestone@5
+            To Compacts4
+
+End
+
+-- AE2 Singularity --
+
+Every 80 Ticks Do
+
+    Input 999999
+        minecraft:cobblestone
+        From EMCLink
+    
+    Output 99999
+        minecraft:cobblestone
+        To Matter
+
+Forget
+
+-- Fiery Unguent --
+
+    Input 4
+        minecraft:emerald
+        From EMCLink
+    
+    Output Retain 4
+        minecraft:emerald
+        To Villager
+
+Forget
+
+-- Double Compressed Grains of Infinity Loop --
+
+    Input 1
+        block_infinity@2
+        From Drawers
+    
+    Output Retain 1
+        block_infinity@2
+        To Sag West Side Slot 0
+
+Forget
+
+-- Crystalized Emberstone --
+
+    Input 32
+        emberstone_ingot
+        From EmberIngotChest 
+
+    Output Retain 32
+        emberstone_ingot
+        To CrystalEmber
+
+Forget
+
+-- Crystalized Chorus --
+
+    Input 16
+        chorus_fruit_popped
+        From EMCLink
+
+    Output 16
+        chorus_fruit_popped
+        To Chorus
+
+End
+
+Every 80 Ticks Do
+
+    Input 10000
+        fluid: :liquidchorus
+        From Chorus
+
+    Output 10000
+        fluid: :liquidchorus
+        To Trash
+
+End

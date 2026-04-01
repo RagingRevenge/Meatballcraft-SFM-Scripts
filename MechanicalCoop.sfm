@@ -1,0 +1,110 @@
+NAME "Mechanized Coop Automation"
+
+-- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick Do
+
+    Input 9000 fe: : 
+        From Power
+
+    Output 9000 fe: : 
+        To EACH Infuser
+
+End
+
+Every 60 Ticks Do
+
+-- Export From Mechanized Coop export bus To Drawers --
+
+    Input 64
+        contenttweaker:*
+        From EACH Export
+
+    Output 64
+        contenttweaker:*
+        To EggDrawers
+
+Forget 
+
+-- Prismarine Shard and Crystals --
+
+    Input 64
+        prismarine_shard
+        From Export
+
+    Input 64
+        prismarine_crystals
+        From Export
+
+    Output 64
+        prismarine_crystals
+        To ResourceDrawers
+
+    Output 64
+        prismarine_shard
+        To ResourceDrawers
+
+Forget
+
+-- Export To Thermal Infuser --
+
+    Input 64
+        contenttweaker:*
+        From EggDrawers
+
+    Output
+        contenttweaker:*
+        To EACH Infuser SLOTS 0
+
+Forget
+
+-- Resources to Drawers --
+
+    Input 256
+        *
+        From EACH Infuser Slot 2
+
+    Output 256
+        *
+        To ResourceDrawers
+
+Forget
+
+-- Cold Iron Ingot Automation --
+
+    Input 256
+        cold_iron_egg
+        From EggDrawers
+
+    Output 256
+        cold_iron_egg
+        To ResourceChest
+
+Forget
+
+-- Emberstone Ingot to Crystallized Ember Automation --
+
+    Input 256
+        emberstone_ingot
+        From ResourceDrawers
+    
+    Output Retain 256
+        emberstone_ingot
+        To EmberIngotChest
+
+-- Prismarine Crystals to Empowered Gravitite Automation --
+
+    Input 128
+        prismarine_crystals
+        From ResourceDrawers
+
+    Output Retain 128
+        prismarine_crystals
+        To Prismarine
+
+End

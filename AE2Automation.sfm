@@ -1,0 +1,370 @@
+Name "AE2 Material & Processor Automation"
+
+-- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick do
+
+        Input 16384 forge_energy: : 
+            From "Power"
+
+        Output 16384 forge_energy: : 
+            To FluixProd, PureFluixSeed, PureCertSeed, CertusDust,
+            FluixDust, ChargedCert
+
+End
+
+Every 80 Ticks Do
+
+-- Fluix Crystal --
+
+    If FluixProd has 
+        <= 16 appliedenergistics2:material@7 Then 
+
+        Input 16
+            redstone
+            From EMCLink
+        
+        Input 16
+            quartz
+            From EMCLink
+
+        Input 16
+            appliedenergistics2:material@1
+            From ChargedCert
+        
+        Output Retain 16
+            redstone
+            To EACH FluixProd
+
+        Output Retain 16
+            quartz
+            To EACH FluixProd
+
+        Output Retain 16
+            appliedenergistics2:material@1
+            To EACH FluixProd
+
+    End
+
+Forget
+    
+-- Fluix Dust --
+
+        Input 8
+            appliedenergistics2:material@7
+            From FluixDrawer
+
+        Output Retain 8
+            appliedenergistics2:material@7
+            To EACH FluixDust
+        
+Forget
+
+-- Certus Dust --
+
+        Input 144
+            appliedenergistics2:material@0
+            From EMCLink
+
+        Output Retain 24
+            appliedenergistics2:material@0
+            To EACH CertusDust 
+        
+Forget
+
+-- Charged Certus --
+
+        Input 32
+            appliedenergistics2:material@0
+            From EMCLink
+    
+        Output Retain 32
+            appliedenergistics2:material@0
+            To EACH ChargedCert
+
+Forget
+
+-- Fluix Seeds --
+    
+        Input 8
+            appliedenergistics2:material@8
+            From FluixDustDrawer
+
+        Output Retain 8
+            appliedenergistics2:material@8
+            To PureFluixSeed
+        
+Forget
+
+-- Certus Seeds --
+    
+        Input 8
+            appliedenergistics2:material@2
+            From CertusDustDrawer
+
+        Input 8
+            sand
+            From EMCLink
+
+        Output Retain 8
+            appliedenergistics2:material@2
+            To PureCertSeed
+        
+        Output Retain 8
+            sand
+            To PureCertSeed
+
+Forget
+
+-- Pure Fluix --
+
+        Input 32
+            appliedenergistics2:crystal_seed@1200
+            From PureFluixSeed
+        
+        Output Retain 32
+            appliedenergistics2:crystal_seed@1200
+            To EACH Seed1 Slot 0
+
+Forget
+
+-- Pure Certus --
+
+        Input 32
+            appliedenergistics2:crystal_seed@0
+            From PureCertSeed
+        
+        Output Retain 32
+            appliedenergistics2:crystal_seed@0
+            To EACH Seed2 Slot 0
+
+End
+
+-- ALL Printed Circuits --
+
+-- Input Materials into Respective Inscribers --
+
+-- Logic (Printed) --
+
+Every 80 Ticks Do
+
+        Input 12
+            gold_ingot
+            From EMCLink
+
+        Output Retain 4
+            gold_ingot
+            To EACH Logic Slot 1
+
+Forget
+
+-- Engineering (Printed) --
+
+        Input 8
+            diamond
+            From EMCLink
+
+        Output Retain 4
+            diamond
+            To EACH Engineering Slot 1
+
+Forget
+
+-- Calculation (Printed) --
+
+        Input 12
+            appliedenergistics2:material@10
+            From PureCertus
+        
+        Output Retain 4
+            appliedenergistics2:material@10
+            To EACH Calculation Slot 1
+
+Forget
+
+-- Silicon (Printed) --
+
+        Input 32
+            appliedenergistics2:material@5
+            From EMCLink
+        
+        Output Retain 4
+            appliedenergistics2:material@5
+            To EACH Silicon Slot 1
+
+End
+
+-- Below This Line is Processor Creation --
+
+-- Input Components into Processor Assigned Inscribers --
+
+Every 80 Ticks Do
+
+-- Logic (Processor) --
+
+        Input 64
+            appliedenergistics2:material@18
+            From Logic
+
+        Input 64
+            appliedenergistics2:material@20
+            From Silicon
+
+        Input 64
+            Redstone
+            From EMCLink
+
+        Output 64
+            appliedenergistics2:material@18,
+            appliedenergistics2:material@20,
+            Redstone
+            To EACH LogicProc
+            
+Forget
+
+-- Engineering (Processor) --
+
+        Input 64
+            appliedenergistics2:material@17
+            From Engineering
+
+        Input 64
+            appliedenergistics2:material@20
+            From Silicon
+
+        Input 64
+            Redstone
+            From EMCLink
+
+        Output 64
+            appliedenergistics2:material@17,
+            appliedenergistics2:material@20,
+            Redstone
+            To EACH EngineeringProc
+
+Forget
+
+-- Calculation (Processor) --
+
+        Input 64
+            appliedenergistics2:material@16
+            From Calculation
+
+        Input 64
+            appliedenergistics2:material@20
+            From Silicon
+
+        Input 64
+            Redstone
+            From EMCLink
+
+        Output 64
+            appliedenergistics2:material@16,
+            appliedenergistics2:material@20,
+            Redstone
+            To EACH CalculationProc
+
+End
+
+-- To Drawers --
+
+Every 80 Ticks Do
+
+-- Logic (Processor) Drawer --
+
+        Input 64
+            appliedenergistics2:material@22
+            From LogicProc
+        Output 64
+            appliedenergistics2:material@22
+            To LogicDrawer
+
+Forget
+
+-- Fluix --
+
+        Input 64
+            appliedenergistics2:material@7
+            From FluixProd
+        Output 64
+            appliedenergistics2:material@7
+            To FluixDrawer
+
+Forget
+
+-- Engineering (Processor) Drawer --
+
+        Input 64
+            appliedenergistics2:material@24
+            From EngineeringProc
+
+        Output 64
+            appliedenergistics2:material@24
+            To EngineeringDrawer
+
+Forget
+
+-- Calculation (Processor) Drawer --
+
+        Input 64
+            appliedenergistics2:material@23
+            From CalculationProc
+        
+        Output 64 
+            appliedenergistics2:material@23
+            To CalculationDrawer
+
+Forget
+
+-- Fluix Dust Drawer --
+
+        Input 192
+            appliedenergistics2:material@8
+            From FluixDust
+        
+        Output 192
+            appliedenergistics2:material@8
+            To FluixDustDrawer
+
+Forget
+
+-- Certus Dust Drawer -- 
+
+        Input 384
+            appliedenergistics2:material@2
+            From CertusDust
+        
+        Output 384
+            appliedenergistics2:material@2
+            To CertusDustDrawer
+
+Forget
+
+-- Pure Certus Drawer --
+
+        Input 64
+            appliedenergistics2:material@10
+            From Seed2
+        
+        Output 64 
+            appliedenergistics2:material@10
+            To PureCertus
+
+Forget
+
+-- Pure Fluix Drawer --
+
+        Input 64
+            appliedenergistics2:material@12
+            From Seed1
+        
+        Output 64 
+            appliedenergistics2:material@12
+            To PureFluix
+
+End

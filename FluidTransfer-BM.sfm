@@ -1,0 +1,110 @@
+Name "BloodMagic Blood Supply"
+
+-- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick do
+
+    Input 8192 forge_energy: : 
+        From Power
+
+    Output 8192 forge_energy: : 
+        To EACH BloodCreation, MatterCreation
+
+End
+
+-- Fluid Transfer --
+
+Every 20 Ticks do
+
+-- Blood Transfer from Altar to ANY Tank --
+
+        Input 50000
+            fluid: :lifeessence
+            From Altar
+
+        Output 50000
+            fluid: :lifeessence
+            To EACH Tank
+
+End
+
+Every 20 Ticks do
+
+        Input 50000
+            fluid: :lifeessence
+            From Altar
+
+        Output 50000
+            fluid: :lifeessence
+            To Tank
+
+End
+
+-- Item Transfer --
+
+Every 20 Ticks Do
+
+-- Twilight Matter to Drawer from Sim Chamber --
+
+    Input 64
+        living_matter_twilight
+        From MatterCreation
+
+    Output 64
+        living_matter_twilight
+        To Drawer
+
+Forget
+
+-- Pristine Twilight to Drawer from Sim Chamber --
+
+    Input 64
+        pristine_matter_twilight_forest
+        From MatterCreation
+
+    Output 64
+        pristine_matter_twilight_forest
+        To Drawer
+
+Forget
+
+-- Polymer Clay to Drawer from EMC Link --
+
+    Input 64 
+        polymer_clay
+        From EMCLink
+
+    Output 64
+        polymer_clay
+        To Drawer
+
+Forget
+
+-- Polymer to Simulation Chamber --
+
+    Input 64
+        polymer_clay
+        From Drawer
+
+    Output 64
+        polymer_clay
+        To MatterCreation
+
+Forget
+
+-- Twilight Matter to Deep Agonizer --
+
+    Input 64
+        living_matter_twilight
+        From Drawer
+
+    Output 64
+        living_matter_twilight
+        To BloodCreation
+
+End

@@ -1,0 +1,70 @@
+Name "Extending Crafting Core"
+
+    -- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick do
+
+    Input 8192 fe: : 
+        From Power
+
+    Output 8192 fe: : 
+        To Jade
+
+End
+
+Every 20 Ticks Do
+    If Drawer1 Has > 0 material@2 
+        and Drawer1 has > 0 clear_glass
+            and Drawer1 has > 0 jade Then
+
+            Input 1
+                clear_glass
+                From Drawer1
+
+            Input 1
+                material@2
+                From Drawer1
+
+            Input 1
+                jade
+                From Drawer1
+
+            Output 1
+                jade
+                To Jade
+
+            Output 1
+                material@2
+                To EACH CertusDust
+
+            Output 1
+                clear_glass
+                To EACH ClearGlass
+
+            Output 1
+                jade
+                To Jade
+
+    End
+
+End
+
+Every 20 Ticks Do
+    If Jade has > 1 part@140 Then
+
+            Input 16
+                part@140
+                From Jade
+
+            Output 16
+                part@140
+                To Drawer2
+
+    End
+
+End
