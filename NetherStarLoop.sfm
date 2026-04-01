@@ -1,0 +1,27 @@
+Name "Nether Star Loop"
+
+Every Tick do
+
+    Input 8192 fe: : 
+        From Power
+
+    Output 8192 fe: : 
+        To Crafter
+
+
+
+Every Redstone Pulse Do
+        Input 4 nether_star From NetherStar
+        Output Retain 4 nether_star To Crafter
+
+Forget
+
+        Input 64 nether_star From Crafter
+        Output 64 nether_star To EACH NetherStar
+
+Forget
+
+        Input 256 redstone_block From EMCLink
+        Output Retain 256 redstone_block To Crafter Slots 1,2,3,4
+
+End
