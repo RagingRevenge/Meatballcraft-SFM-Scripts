@@ -1,0 +1,23 @@
+Name "EMC Loop"
+
+Every Redstone Pulse Do
+
+        Input 1028
+            arcanium
+            From Source
+
+        Output Retain 1028
+            arcanium
+            To CrafterEMC
+
+Forget
+
+        Input 512
+            projecte:*
+            From CrafterEMC Slots 26, 27, 28, 29
+
+        Output 512
+            projecte:*
+            To Source
+
+End
