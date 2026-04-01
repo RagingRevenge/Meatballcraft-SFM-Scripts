@@ -20,7 +20,9 @@ End
 Every 640 Ticks Do
 
     If Drawers has 
-        > 8 flammable_dust Then
+        > 8 flammable_dust
+            and Drawers has 
+                > 8 ghostly_powder then
 
             Input 8
                 flammable_dust
