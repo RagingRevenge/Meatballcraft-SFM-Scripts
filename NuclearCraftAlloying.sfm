@@ -1,0 +1,543 @@
+Name "Nuclearcraft Alloying and Crafting - MBC"
+
+-- Below You can Adjust the power values and Tick Timings. --
+-- If you adjust Tick timings though for power, Peak Tick Time will --
+-- Go up. Just be aware. --
+
+-- Tick times on Item Distribution cannot be changed due to mod limits! --
+-- Adjust Item Values as needed --
+
+Every Tick do
+
+    Input 16384 fe: : 
+        From Power
+
+    Output 16384 fe: : 
+        To Bronze, Invar, Constantan, Electrum, Alumite, CrystaltineDust, CrystaltineIngot,
+        IronAlloy, EnergeticAlloy, VibrantAlloy, ModPrimer, Modularium, PulsIron, 
+        RedstoneAlloy, Brass, Soularium, EnergeticSilvAlloy, VividAlloy, DarkSteel, 
+        EndSteel, ElectricalSteel, MelAlloy, DimBlend, EnergeticBlend, Steel, FerroBoron,
+        ToughAlloy
+
+End
+
+-- Alloyer Recipes Below This Line --
+
+-- Each Recipe is Labeled for Convenience and Organization!
+
+-- Bronze Ingot --
+
+Every 80 Ticks do
+
+-- Bronze Ingot --
+
+        Input 8
+            thermalfoundation:material@129
+            From EMCLink
+        Input 24
+            thermalfoundation:material@128
+            From EMCLink
+
+        Output Retain 8
+            thermalfoundation:material@129
+            To Bronze Slot 0
+        Output Retain 24
+            thermalfoundation:material@128
+            To Bronze Slot 1
+
+Forget
+
+-- FerroBoron --
+
+        Input 8
+            material@160
+            From Drawers
+        
+        Input 8
+            ingot@5
+            From EMCLink
+    
+        Output 8 Each
+            Retain 8 ingot@5,
+            Retain 8 material@160
+            To FerroBoron
+
+Forget
+
+-- Tough Alloy --
+
+        Input 8
+            alloy@6
+            From Drawers
+        
+        Input 8
+            ingot@6
+            From EMCLink
+
+        Output 8 Each
+            Retain 8 ingot@6,
+            Retain 8 alloy@6
+            To ToughAlloy
+
+Forget
+
+-- Invar Ingot --
+
+    Input 16
+        minecraft:iron_ingot
+        From EMCLink
+    Input 8
+        thermalfoundation:material@133
+        From EMCLink
+
+    Output Retain 16
+        minecraft:iron_ingot
+        To Invar Slot 0
+    Output Retain 8
+        thermalfoundation:material@133
+        To Invar Slot 1
+
+Forget
+
+-- Constantan Ingot --
+
+    Input 16
+        thermalfoundation:material@128
+        From EMCLink
+    Input 16
+        thermalfoundation:material@133
+        From EMCLink
+
+    Output Retain 16
+        thermalfoundation:material@128
+        To Constantan Slot 0
+    Output Retain 16
+        thermalfoundation:material@133
+        To Constantan Slot 1
+
+Forget
+
+-- Electrum Ingot -- 
+
+    Input 16
+        thermalfoundation:material@130
+        From EMCLink
+    Input 16
+        minecraft:gold_ingot
+        From EMCLink
+
+    Output Retain 16
+        thermalfoundation:material@130
+        To Electrum Slot 0
+    Output Retain 16
+        minecraft:gold_ingot
+        To Electrum Slot 1
+
+Forget
+    
+-- Alumite Ingot --
+
+    Input 30
+        thermalfoundation:material@132
+        From EMCLink
+    Input 18
+        minecraft:iron_ingot
+        From EMCLink
+
+    Output Retain 30
+        thermalfoundation:material@132
+        To Alumite Slot 0
+    Output Retain 18
+        minecraft:iron_ingot
+        To Alumite Slot 1
+
+Forget
+
+-- Crystaltine Dust --
+
+    Input 16
+        minecraft:lapis_block
+        From EMCLink
+    Input 32
+        minecraft:diamond_block
+        From EMCLink
+
+    Output Retain 16
+        minecraft:lapis_block
+        To CrystaltineDust Slot 0
+    Output Retain 32
+        minecraft:diamond_block
+        To CrystaltineDust Slot 1
+
+Forget
+
+-- Crystaltine Ingot --
+
+    Input 8
+        contenttweaker:crystaltine_dust
+        From Drawers
+    Input 8
+        minecraft:iron_ingot
+        From EMCLink
+
+    Output Retain 8
+        minecraft:iron_ingot
+        To CrystaltineIngot Slot 0
+    Output Retain 8
+        contenttweaker:crystaltine_dust
+        To CrystaltineIngot Slot 1
+
+Forget
+
+-- Iron Alloy Ingot --
+
+    Input 8
+        minecraft:iron_ingot
+        From EMCLink
+    Input 16
+        thermalfoundation:material@131
+        From EMCLink
+
+    Output Retain 8
+        minecraft:iron_ingot
+        To IronAlloy Slot 0
+    Output Retain 16
+        thermalfoundation:material@131
+        To IronAlloy Slot 1
+
+Forget
+
+-- Energetic Blend --
+
+    Input 128
+        minecraft:glowstone_dust
+        From EMCLink
+    Input 128
+        minecraft:redstone@0
+        From EMCLink
+
+    Output Retain 128
+        minecraft:glowstone_dust
+        To EnergeticBlend
+    Output Retain 128
+        minecraft:redstone@0
+        To EnergeticBlend
+
+Forget
+
+-- Energetic Alloy Ingot --
+
+    Input 16
+        nuclearcraft:compound@2
+        From Drawers
+    Input 8
+        minecraft:gold_ingot
+        From EMCLink
+
+    Output Retain 8
+        minecraft:gold_ingot
+        To EnergeticAlloy Slot 0
+    Output Retain 16
+        nuclearcraft:compound@2
+        To EnergeticAlloy Slot 1
+
+Forget
+
+-- Modularium Primer --
+
+    Input 24
+        "projecte:item.pe_matter" with meta 0
+        From EMCLink
+    Input 8
+        "projecte:item.pe_matter" with meta 1
+        From EMCLink
+
+    Output Retain 24
+        "projecte:item.pe_matter" with meta 0
+        To ModPrimer Slot 0
+    Output Retain 8
+        "projecte:item.pe_matter" with meta 1
+        To ModPrimer Slot 1
+
+Forget
+
+-- Modularium Ingot --
+
+    Input 2
+        contenttweaker:modularium_primer 
+        From Drawers
+    Input 2
+        minecraft:iron_ingot 
+        From EMCLink
+
+    Output Retain 2
+        contenttweaker:modularium_primer
+        To Modularium Slot 0
+    Output Retain 2
+        minecraft:iron_ingot
+        To Modularium Slot 1
+
+Forget
+
+-- Pulsating Iron --
+
+    Input 8
+        minecraft:iron_Ingot
+        From EMCLink
+    Input 8
+        minecraft:ender_pearl 
+        From EMCLink
+
+    Output Retain 8
+        minecraft:iron_Ingot
+        To PulsIron Slot 0
+    Output Retain 8
+        minecraft:ender_pearl
+        To PulsIron Slot 1
+
+Forget
+
+-- Redstone Alloy Ingot --
+
+    Input 8
+        minecraft:redstone@0
+        From EMCLink
+    Input 8
+        appliedenergistics2:material@5
+        From EMCLink
+
+    Output Retain 8
+        minecraft:redstone@0
+        To RedstoneAlloy Slot 0
+    Output Retain 8
+        appliedenergistics2:material@5
+        To RedstoneAlloy Slot 1
+
+Forget
+
+-- Brass Ingot --
+
+    Input 24
+        thermalfoundation:material@128
+        From EMCLink
+    Input 8
+        techreborn:ingot@18
+        From EMCLink
+
+    Output Retain 24
+        thermalfoundation:material@128
+        To Brass Slot 0
+    Output Retain 8
+        techreborn:ingot@18
+        To Brass Slot 1
+
+Forget
+
+-- Soularium Ingot --
+
+    Input 8
+        minecraft:soul_sand
+        From EMCLink
+    Input 8
+        minecraft:gold_ingot
+        From EMCLink
+
+    Output Retain 8
+        minecraft:soul_sand
+        To Soularium Slot 0
+    Output Retain 8
+        minecraft:gold_ingot
+        To Soularium Slot 1
+
+Forget
+
+-- Energetic Silver Ingot --
+
+    Input 16
+        nuclearcraft:compound@2
+        From Drawers
+    Input 8
+        thermalfoundation:material@130
+        From EMCLink
+
+    Output Retain 16
+        nuclearcraft:compound@2
+        To EnergeticSilvAlloy Slot 0
+    Output Retain 8
+        thermalfoundation:material@130
+        To EnergeticSilvAlloy Slot 1
+
+Forget
+
+-- Steel Production using Akashic Tome --
+
+        Input 256
+            minecraft:redstone_block
+            From EMCLink
+
+        Input 256
+            thermalfoundation:material@160
+            From Drawers
+
+        Output Retain 128
+            minecraft:redstone_block
+            To Steel
+
+        Output Retain 256
+            thermalfoundation:material@160
+            To Steel
+
+Forget
+
+-- Dark Steel Ingot --
+
+        Input 16
+            minecraft:obsidian
+            From EMCLink
+
+        Input 16
+            thermalfoundation:material@160
+            From Drawers
+
+        Output Retain 16
+            minecraft:obsidian
+            To DarkSteel Slot 0
+
+        Output Retain 16
+            thermalfoundation:material@160
+            To DarkSteel Slot 1
+    
+Forget
+
+-- Electrical Steel Ingot --
+
+        Input 8
+            appliedenergistics2:material@5
+            From EMCLink
+
+        Input 8
+            thermalfoundation:material@160
+            From Drawers
+
+        Output Retain 8
+            appliedenergistics2:material@5
+            To ElectricalSteel Slot 0
+        
+        Output Retain 8
+            thermalfoundation:material@160
+            To ElectricalSteel Slot 1
+
+End
+
+Every 80 Ticks Do
+
+-- Dimensional Blend --
+
+    If Drawers Has 
+            > 128 thermalfoundation:material@770 Then
+
+        Input 8
+            techreborn:dust@21
+            From EMCLink
+
+        Input 32
+            thermalfoundation:material@770
+            From Drawers
+
+        Output Retain 8
+            techreborn:dust@21
+            To DimBlend Slot 0
+        
+        Output Retain 32
+            thermalfoundation:material@770
+            To DimBlend Slot 1
+    
+    End
+
+-- End Steel Ingot --
+
+    If Drawers Has 
+            > 128 enderio:item_alloy_ingot@6 Then
+
+        Input 8
+            enderio:item_alloy_ingot@6
+            From Drawers
+
+        Input 16
+            nuclearcraft:compound@8
+            From Drawers
+
+        Output Retain 8
+            enderio:item_alloy_ingot@6
+            To EndSteel Slot 0
+
+        Output Retain 16
+            nuclearcraft:compound@8
+            To EndSteel Slot 1
+    
+    End 
+
+-- Vivid Alloy Ingot --
+
+    If Drawers has > 256 enderio:item_alloy_endergy_ingot@5 Then
+
+    Input 8
+        minecraft:ender_pearl
+        From EMCLink
+    Input 8
+        enderio:item_alloy_endergy_ingot@5
+        From Drawers
+
+    Output Retain 8
+        minecraft:ender_pearl
+        To VividAlloy Slot 0
+    Output Retain 8
+        enderio:item_alloy_endergy_ingot@5
+        To VividAlloy Slot 1
+
+    End
+
+-- Vibrant Alloy Ingot --
+
+    If Drawers has > 256 enderio:item_alloy_ingot@1 Then
+
+    Input 8
+        enderio:item_alloy_ingot@1
+        From Drawers
+    Input 8
+        minecraft:ender_pearl
+        From EMCLink
+
+    Output Retain 8
+        enderio:item_alloy_ingot@1
+        To VibrantAlloy Slot 0
+    Output Retain 8
+        minecraft:ender_pearl
+        To VibrantAlloy Slot 1
+
+    End
+
+-- Melodic Alloy --
+
+    If Drawers Has 
+            > 128 enderio:item_alloy_ingot@8 Then
+
+        Input 8
+            enderio:item_alloy_ingot@8
+            From Drawers
+
+        Input 16
+            minecraft:chorus_fruit_popped
+            From EMCLink
+
+        Output Retain 8
+            enderio:item_alloy_ingot@8
+            To MelAlloy Slot 0
+
+        Output Retain 16
+            minecraft:chorus_fruit_popped
+            To MelAlloy Slot 1
+    
+    End 
+
+End
